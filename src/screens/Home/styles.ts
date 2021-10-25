@@ -1,17 +1,17 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
 
 export const Container = styled.View`
-  /* flex: 1; */
-  height: 200px;
-  width: 200px;
-  background: blue;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  border-radius: 6px;
+  ${({ theme }) => css`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+
+    background-color: ${theme.colors.background_primary};
+  `}
 `
 export const Title = styled.Text`
-  font-size: 28px;
-
-  color: white;
+  ${({ theme }) => css`
+    font-size: 30px;
+    font-family: ${theme.fonts.secondary_600};
+  `}
 `
