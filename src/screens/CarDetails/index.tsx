@@ -10,6 +10,7 @@ import peopleSvg from '../../assets/people.svg'
 import { Accessory } from '../../components/Accessory'
 import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider'
+import { Button } from '../../components/Button'
 
 import * as S from './styles'
 
@@ -51,6 +52,10 @@ export function CarDetails() {
           Maestranza de Sevilla. É um belíssimo carro para qume gosta de acelerar.
         </S.About>
       </S.Content>
+
+      <S.Footer>
+        <Button title="Confirmar" />
+      </S.Footer>
     </S.Container>
   )
 }
