@@ -4,7 +4,7 @@ import AppLoading from 'expo-app-loading'
 import { ThemeProvider } from 'styled-components'
 
 import { fonts, useFonts } from './fonts'
-import { SchedulingDetails } from './src/screens/SchedulingDetails'
+import { SchedulingComplete } from './src/screens/SchedulingComplete'
 import theme from './src/screens/styles/theme'
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SchedulingDetails />
+      <SchedulingComplete />
     </ThemeProvider>
   )
 }
