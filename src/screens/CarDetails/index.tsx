@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import speedSvg from '../../assets/speed.svg'
 import accelerationSvg from '../../assets/acceleration.svg'
@@ -15,10 +16,20 @@ import { Button } from '../../components/Button'
 import * as S from './styles'
 
 export function CarDetails() {
+  const nagivation = useNavigation()
+
+  function handleHome() {
+    nagivation.navigate('Home')
+  }
+
+  function handleConfirmRental() {
+    nagivation.navigate('Scheduling')
+  }
+
   return (
     <S.Container>
       <S.Header>
-        <BackButton onPress={() => {}} color="blue" />
+        <BackButton onPress={handleHome} color="blue" />
       </S.Header>
 
       <S.CarImages>
@@ -54,7 +65,7 @@ export function CarDetails() {
       </S.Content>
 
       <S.Footer>
-        <Button title="Confirmar" />
+        <Button title="Escolher período de aluguel" onPress={handleConfirmRental} />
       </S.Footer>
     </S.Container>
   )
