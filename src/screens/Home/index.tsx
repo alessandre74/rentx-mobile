@@ -18,8 +18,8 @@ export function Home() {
 
   const nagivation = useNavigation()
 
-  function handleCarDetails() {
-    nagivation.navigate('CarDetails')
+  function handleCarDetails(car: CarDTO) {
+    nagivation.navigate('CarDetails', { car })
   }
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export function Home() {
         <S.HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
 
-          <S.TotalCars>Toatl de 12 carros</S.TotalCars>
+          <S.TotalCars>{`Total de ${cars.length} carros`}</S.TotalCars>
         </S.HeaderContent>
       </S.Header>
 
@@ -53,7 +53,7 @@ export function Home() {
         <S.CarList
           data={cars}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <Car data={item} onPress={handleCarDetails} />}
+          renderItem={({ item }) => <Car data={item} onPress={() => handleCarDetails(item)} />}
         />
       )}
     </S.Container>

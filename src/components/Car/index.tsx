@@ -3,6 +3,7 @@ import { RectButtonProps } from 'react-native-gesture-handler'
 
 import GasolineSvg from '../../assets/gasoline.svg'
 import { CarDTO } from '../../dtos/CarDTO'
+import { formatCurrency } from '../../utils/formatted'
 
 import * as S from './styles'
 
@@ -20,7 +21,7 @@ export function Car({ data, ...rest }: Props) {
         <S.About>
           <S.Rent>
             <S.Period>{data.rent.period}</S.Period>
-            <S.Price>{`R$ ${data.rent.price}`}</S.Price>
+            <S.Price>{formatCurrency(data.rent.price)}</S.Price>
           </S.Rent>
 
           <S.type>
