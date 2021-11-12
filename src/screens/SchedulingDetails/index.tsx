@@ -22,8 +22,8 @@ export function SchedulingDetails() {
   const theme = useTheme()
   const navigation = useNavigation()
 
-  function handleScheduling() {
-    navigation.navigate('Scheduling')
+  function handleBack() {
+    navigation.goBack()
   }
 
   function handleConfirmRental() {
@@ -33,7 +33,7 @@ export function SchedulingDetails() {
   return (
     <S.Container>
       <S.Header>
-        <BackButton onPress={handleScheduling} color="blue" />
+        <BackButton onPress={handleBack} color="blue" />
       </S.Header>
 
       <S.CarImages>

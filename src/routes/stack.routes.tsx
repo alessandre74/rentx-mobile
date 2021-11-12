@@ -7,14 +7,15 @@ import { Scheduling } from '../screens/Scheduling'
 import { SchedulingDetails } from '../screens/SchedulingDetails'
 import { SchedulingComplete } from '../screens/SchedulingComplete'
 import { CarDTO } from '../dtos/CarDTO'
+import { MarkedDateProps } from '../components/Calendar'
 
 declare global {
   namespace ReactNavigation {
     interface RootParamList {
       Home: undefined
       CarDetails: { car: CarDTO }
-      Scheduling: undefined
-      SchedulingDetails: undefined
+      Scheduling: { car: CarDTO }
+      SchedulingDetails: { car: CarDTO; dates: string[] }
       SchedulingComplete: undefined
     }
   }
