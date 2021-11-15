@@ -25,6 +25,6 @@ export function generateIntervals(start: DayProps, end: DayProps) {
       }
     }
   )
-  console.log(interval)
+
   return interval
 }
