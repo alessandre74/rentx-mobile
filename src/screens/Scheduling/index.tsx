@@ -28,19 +28,19 @@ export function Scheduling() {
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod)
 
   const theme = useTheme()
-  const nagivation = useNavigation()
+  const navigation = useNavigation()
   const route = useRoute()
   const { car } = route.params as Params
 
   function handleBack() {
-    nagivation.goBack()
+    navigation.goBack()
   }
 
   function handleConfirmRental() {
     if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
       Alert.alert('Selecione o intervalo para alugar.')
     } else {
-      nagivation.navigate('SchedulingDetails', { car, dates: Object.keys(makedDates) })
+      navigation.navigate('SchedulingDetails', { car, dates: Object.keys(makedDates) })
     }
   }
 

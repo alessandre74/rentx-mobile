@@ -17,16 +17,16 @@ type Params = {
 }
 
 export function CarDetails() {
-  const nagivation = useNavigation()
+  const navigation = useNavigation()
   const route = useRoute()
   const { car } = route.params as Params
 
   function handleBack() {
-    nagivation.goBack()
+    navigation.goBack()
   }
 
   function handleConfirmRental() {
-    nagivation.navigate('Scheduling', { car })
+    navigation.navigate('Scheduling', { car })
   }
 
   return (

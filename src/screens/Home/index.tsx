@@ -18,15 +18,15 @@ export function Home() {
   const [cars, setCars] = useState<CarDTO[]>([])
   const [loading, setLoading] = useState(true)
 
-  const nagivation = useNavigation()
+  const navigation = useNavigation()
   const theme = useTheme()
 
   function handleCarDetails(car: CarDTO) {
-    nagivation.navigate('CarDetails', { car })
+    navigation.navigate('CarDetails', { car })
   }
 
   function handleOpenMyCars() {
-    nagivation.navigate('MyCars')
+    navigation.navigate('MyCars')
   }
 
   useEffect(() => {
