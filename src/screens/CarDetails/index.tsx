@@ -36,7 +36,7 @@ export function CarDetails() {
       </S.Header>
 
       <S.CarImages>
-        <ImageSlider imageUrl={car.photos} />
+        <ImageSlider imagesUrl={car.photos} />
       </S.CarImages>
 
       <S.Content>

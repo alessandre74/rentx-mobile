@@ -52,9 +52,11 @@ export function MyCars() {
         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <BackButton onPress={handleBack} color={theme.colors.shape} />
 
-        <S.Title>Seus agendamentos, {'\n'} estão aqui.</S.Title>
+        <S.TextWrapper>
+          <S.Title>Seus agendamentos, {'\n'} estão aqui.</S.Title>
 
-        <S.SubTitle>Conforto, segurança e praticidade.</S.SubTitle>
+          <S.SubTitle>Conforto, segurança e praticidade.</S.SubTitle>
+        </S.TextWrapper>
       </S.Header>
       {loading ? (
         <Load />
@@ -69,7 +71,7 @@ export function MyCars() {
             keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
-              <S.CarWapper>
+              <S.CarWrapper>
                 <Car data={item.car} />
 
                 <S.CarFooter>
@@ -85,7 +87,7 @@ export function MyCars() {
                     <S.CarFooterDate>{item.endDate}</S.CarFooterDate>
                   </S.CarFooterPeriod>
                 </S.CarFooter>
-              </S.CarWapper>
+              </S.CarWrapper>
             )}
           />
         </S.Content>

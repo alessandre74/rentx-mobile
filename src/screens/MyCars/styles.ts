@@ -16,11 +16,18 @@ export const Header = styled.View`
 
     background-color: ${theme.colors.header};
 
-    justify-content: center;
     padding: 25px;
     padding-top: ${getStatusBarHeight() + 30}px;
   `}
 `
+
+export const TextWrapper = styled.View`
+  width: 100%;
+
+  flex: 1;
+  justify-content: center;
+`
+
 export const Title = styled.Text`
   ${({ theme }) => css`
     color: ${theme.colors.shape};
@@ -67,7 +74,7 @@ export const AppointmentsQuantity = styled.Text`
     font-size: ${RFValue(15)}px;
   `}
 `
-export const CarWapper = styled.View`
+export const CarWrapper = styled.View`
   margin-bottom: 16px;
 `
 export const CarFooter = styled.View`
