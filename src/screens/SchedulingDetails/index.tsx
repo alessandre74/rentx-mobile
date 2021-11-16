@@ -30,11 +30,15 @@ type RentalPeriod = {
 }
 
 export function SchedulingDetails() {
+  const [loading, setLoading] = useState(false)
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod)
   const theme = useTheme()
   const navigation = useNavigation()
   const route = useRoute()
   const { car, dates } = route.params as Params
+
+  const start = format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy')
+  const end = format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy')
 
   const rentTotal = Number(dates.length * car.rent.price)
 
@@ -44,13 +48,16 @@ export function SchedulingDetails() {
 
   async function handleConfirmRental() {
     try {
+      setLoading(true)
       const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`)
 
       const unavailable_dates = [...schedulesByCar.data.unavailable_dates, ...dates]
 
       await api.post('/schedules_byuser', {
         user_id: 1,
-        car
+        car,
+        startDate: start,
+        endDate: end
       })
 
       await api.put(`/schedules_bycars/${car.id}`, {
@@ -60,15 +67,13 @@ export function SchedulingDetails() {
 
       navigation.navigate('SchedulingComplete')
     } catch (error) {
+      setLoading(false)
       Alert.alert('Não foi possível confirmar o agendamento.')
     }
   }
 
   useEffect(() => {
-    setRentalPeriod({
-      start: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      end: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy')
-    })
+    setRentalPeriod({ start, end })
   }, [])
 
   return (
@@ -126,7 +131,9 @@ export function SchedulingDetails() {
           <S.RentaPriceLabel>TOTAL</S.RentaPriceLabel>
           <S.RentalPriceDetails>
             <S.RentalPriceQuota>
-              {`${formatCurrency(car.rent.price)} x${dates.length} diárias`}
+              {`${formatCurrency(car.rent.price)} x${dates.length} ${
+                dates.length === 1 ? 'diária' : 'diárias'
+              }`}
             </S.RentalPriceQuota>
             <S.RentalPriceTotal>{formatCurrency(rentTotal)}</S.RentalPriceTotal>
           </S.RentalPriceDetails>
@@ -134,7 +141,13 @@ export function SchedulingDetails() {
       </S.Content>
 
       <S.Footer>
-        <Button title="Aluga agora" color={theme.colors.success} onPress={handleConfirmRental} />
+        <Button
+          title="Aluga agora"
+          color={theme.colors.success}
+          onPress={handleConfirmRental}
+          enabled={!loading}
+          loading={loading}
+        />
       </S.Footer>
     </S.Container>
   )

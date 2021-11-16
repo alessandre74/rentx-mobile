@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { format } from 'date-fns'
-import { Alert, StatusBar } from 'react-native'
+import { StatusBar } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useTheme } from 'styled-components'
 import { CarDTO } from '../../dtos/CarDTO'
@@ -37,11 +37,7 @@ export function Scheduling() {
   }
 
   function handleConfirmRental() {
-    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
-      Alert.alert('Selecione o intervalo para alugar.')
-    } else {
-      navigation.navigate('SchedulingDetails', { car, dates: Object.keys(makedDates) })
-    }
+    navigation.navigate('SchedulingDetails', { car, dates: Object.keys(makedDates) })
   }
 
   function handleChangeDate(date: DayProps) {
@@ -102,7 +98,11 @@ export function Scheduling() {
       </S.Content>
 
       <S.Footer>
-        <Button title="Confirmar" onPress={handleConfirmRental} />
+        <Button
+          title="Confirmar"
+          onPress={handleConfirmRental}
+          enabled={!!rentalPeriod.startFormatted}
+        />
       </S.Footer>
     </S.Container>
   )

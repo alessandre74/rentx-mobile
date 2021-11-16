@@ -2,17 +2,21 @@ import React, { useState, useEffect } from 'react'
 import { StatusBar, FlatList } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useTheme } from 'styled-components'
+import { AntDesign } from '@expo/vector-icons'
 
 import { CarDTO } from '../../dtos/CarDTO'
 import { api } from '../../services/api'
 import { Car } from '../../components/Car'
 import { BackButton } from '../../components/BackButton'
+import { Load } from '../../components/Load'
 
 import * as S from './styles'
 
 type CarProps = {
   id: string
   user_id: string
+  startDate: string
+  endDate: string
   car: CarDTO
 }
 
@@ -48,25 +52,44 @@ export function MyCars() {
         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <BackButton onPress={handleBack} color={theme.colors.shape} />
 
-        <S.Title>
-          Escolha uma {'\n'} data de início e {'\n'} fim do aluguel
-        </S.Title>
+        <S.Title>Seus agendamentos, {'\n'} estão aqui.</S.Title>
 
         <S.SubTitle>Conforto, segurança e praticidade.</S.SubTitle>
       </S.Header>
+      {loading ? (
+        <Load />
+      ) : (
+        <S.Content>
+          <S.Appointments>
+            <S.AppointmentsTitle>Agendamentos feitos</S.AppointmentsTitle>
+            <S.AppointmentsQuantity>{cars.length}</S.AppointmentsQuantity>
+          </S.Appointments>
+          <FlatList
+            data={cars}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => (
+              <S.CarWapper>
+                <Car data={item.car} />
 
-      <S.Content>
-        <S.Appointments>
-          <S.AppointmentsTitle>Agendamentos feitos</S.AppointmentsTitle>
-          <S.AppointmentsQuantity>05</S.AppointmentsQuantity>
-        </S.Appointments>
-        <FlatList
-          data={cars}
-          keyExtractor={item => item.id}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => <Car data={item.car} />}
-        />
-      </S.Content>
+                <S.CarFooter>
+                  <S.CarFooterTitle>Período</S.CarFooterTitle>
+                  <S.CarFooterPeriod>
+                    <S.CarFooterDate>{item.startDate}</S.CarFooterDate>
+                    <AntDesign
+                      name="arrowright"
+                      size={20}
+                      color={theme.colors.title}
+                      style={{ marginHorizontal: 10 }}
+                    />
+                    <S.CarFooterDate>{item.endDate}</S.CarFooterDate>
+                  </S.CarFooterPeriod>
+                </S.CarFooter>
+              </S.CarWapper>
+            )}
+          />
+        </S.Content>
+      )}
     </S.Container>
   )
 }
