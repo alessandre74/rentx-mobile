@@ -1,5 +1,15 @@
 import React from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+import { StatusBar } from 'react-native'
+
+import {
+  useSharedValue,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolate
+} from 'react-native-reanimated'
 
 import { Accessory } from '../../components/Accessory'
 import { BackButton } from '../../components/BackButton'
@@ -20,6 +30,24 @@ export function CarDetails() {
   const navigation = useNavigation()
   const route = useRoute()
   const { car } = route.params as Params
+  const statusBarHeight = getStatusBarHeight()
+
+  const scrollY = useSharedValue(0)
+  const scrollHandler = useAnimatedScrollHandler(event => {
+    scrollY.value = event.contentOffset.y
+  })
+
+  const headerStyleAnimation = useAnimatedStyle(() => {
+    return {
+      height: interpolate(scrollY.value, [0, 200], [200, statusBarHeight + 50], Extrapolate.CLAMP)
+    }
+  })
+
+  const sliderCarsStyleAnimation = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(scrollY.value, [0, 150], [1, 0], Extrapolate.CLAMP)
+    }
+  })
 
   function handleBack() {
     navigation.goBack()
@@ -31,15 +59,19 @@ export function CarDetails() {
 
   return (
     <S.Container>
-      <S.Header>
-        <BackButton onPress={handleBack} color="blue" />
-      </S.Header>
+      <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
 
-      <S.CarImages>
-        <ImageSlider imagesUrl={car.photos} />
-      </S.CarImages>
+      <S.AnimatedHeaderAndSlider style={headerStyleAnimation}>
+        <S.Header>
+          <BackButton onPress={handleBack} />
+        </S.Header>
 
-      <S.Content>
+        <S.AnimatedCarImages style={sliderCarsStyleAnimation}>
+          <ImageSlider imagesUrl={car.photos} />
+        </S.AnimatedCarImages>
+      </S.AnimatedHeaderAndSlider>
+
+      <S.AnimatedContent onScroll={scrollHandler} scrollEventThrottle={16}>
         <S.Details>
           <S.Description>
             <S.Brand>{car.brand}</S.Brand>
@@ -62,7 +94,7 @@ export function CarDetails() {
           ))}
         </S.Accessories>
         <S.About>{car.about}</S.About>
-      </S.Content>
+      </S.AnimatedContent>
 
       <S.Footer>
         <Button title="Escolher período de aluguel" onPress={handleConfirmRental} />
