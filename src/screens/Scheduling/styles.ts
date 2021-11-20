@@ -15,7 +15,6 @@ export const Container = styled.View`
 export const Header = styled.View`
   width: 100%;
   height: 325px;
-  border: 1px solid red;
   background-color: ${({ theme }) => theme.colors.header};
 
   justify-content: center;
@@ -31,7 +30,6 @@ export const Title = styled.Text`
     margin-top: 24px;
   `}
 `
-
 export const RentalPeriod = styled.View`
   width: 100%;
   flex-direction: row;

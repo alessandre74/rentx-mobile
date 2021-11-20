@@ -5,11 +5,7 @@ import { useTheme } from 'styled-components'
 import { generateIntervals } from './generateIntervals'
 import { ptBR } from './localeConfig'
 
-import {
-  Calendar as CustomCalendar,
-  LocaleConfig,
-  DateCallbackHandler
-} from 'react-native-calendars'
+import { Calendar as CustomCalendar, LocaleConfig } from 'react-native-calendars'
 
 LocaleConfig.locales['pt-br'] = ptBR
 LocaleConfig.defaultLocale = 'pt-br'
@@ -33,7 +29,7 @@ type DayProps = {
 
 type CalendarProps = {
   markedDates: MarkedDateProps
-  onDayPress: DateCallbackHandler
+  onDayPress: (date: DayProps) => void
 }
 
 function Calendar({ markedDates, onDayPress }: CalendarProps) {
