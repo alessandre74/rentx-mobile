@@ -2,8 +2,8 @@
 <img src ="./src/assets/logo.svg" width="30%" />
 </div>
 
-<div align="center" style="padding-bottom:30px; background-color:transparent">
-<img src ="./assets/myCars.gif" style="background-color:transparent" />
+<div align="center" style="padding-bottom:30px; background:transparent">
+<img src ="./assets/myCars.gif" style="background:transparent" />
 </div>
 
 ## 💻 Projeto
@@ -43,7 +43,7 @@ yarn ou sudo yarn
 Altere o arquivo API
 
 ```
-Na pasta services/api.ts em  baseURL: 'http://seu ip ou localhost:3333'
+Na pasta services/api.ts em baseURL: 'http://seu ip ou localhost:3333'
 ```
 
 Inicie o server
@@ -60,4 +60,4 @@ expo start
 
 ## 📄 License
 
-Este projeto está sob a licença MIT. Consulte a licença [LICENSE](LICENSE.md) para mais informações.
+Este projeto está sob a licença MIT.
