@@ -9,7 +9,7 @@ import { CarDTO } from '../../dtos/CarDTO'
 
 import { Car } from '../../components/Car'
 import { BackButton } from '../../components/BackButton'
-import { Load } from '../../components/Load'
+import { LoadAnimation } from '../../components/LoadAnimation'
 
 import * as S from './styles'
 
@@ -58,7 +58,7 @@ export function MyCars() {
         </S.TextWrapper>
       </S.Header>
       {loading ? (
-        <Load />
+        <LoadAnimation />
       ) : (
         <S.Content>
           <S.Appointments>
