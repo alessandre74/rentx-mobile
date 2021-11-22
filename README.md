@@ -2,8 +2,8 @@
 <img src ="./src/assets/logo.svg" width="30%" />
 </div>
 
-<div align="center" style="padding-bottom:30px">
-<img src ="./assets/myCars.gif"/>
+<div align="center" style="padding-bottom:30px; background-color:transparent">
+<img src ="./assets/myCars.gif" style="background-color:transparent" />
 </div>
 
 ## 💻 Projeto
