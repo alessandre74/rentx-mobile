@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { StatusBar, FlatList } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { useTheme } from 'styled-components'
 import { AntDesign } from '@expo/vector-icons'
 
-import { CarDTO } from '../../dtos/CarDTO'
+import useHooks from '../../Hooks'
+
 import { api } from '../../services/api'
+import { CarDTO } from '../../dtos/CarDTO'
+
 import { Car } from '../../components/Car'
 import { BackButton } from '../../components/BackButton'
 import { Load } from '../../components/Load'
@@ -24,8 +25,7 @@ export function MyCars() {
   const [cars, setCars] = useState<CarProps[]>([])
   const [loading, setLoading] = useState(true)
 
-  const navigation = useNavigation()
-  const theme = useTheme()
+  const { navigation, theme } = useHooks()
 
   function handleBack() {
     navigation.goBack()
@@ -53,8 +53,7 @@ export function MyCars() {
         <BackButton onPress={handleBack} color={theme.colors.shape} />
 
         <S.TextWrapper>
-          <S.Title>Seus agendamentos, {'\n'} estão aqui.</S.Title>
-
+          <S.Title>Seus agendamentos, {'\n'}estão aqui.</S.Title>
           <S.SubTitle>Conforto, segurança e praticidade.</S.SubTitle>
         </S.TextWrapper>
       </S.Header>

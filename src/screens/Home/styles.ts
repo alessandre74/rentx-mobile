@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components/native'
 import { FlatList } from 'react-native'
+import Animated from 'react-native-reanimated'
 import { RectButton } from 'react-native-gesture-handler'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { CarDTO } from '../../dtos/CarDTO'
@@ -45,7 +46,7 @@ export const CarList = styled(FlatList as new () => FlatList<CarDTO>).attrs({
   `}
 `
 
-export const MyCarsButton = styled(RectButton)`
+export const MyCarsButton = styled(Animated.createAnimatedComponent(RectButton))`
   ${({ theme }) => css`
     width: 60px;
     height: 60px;
@@ -55,9 +56,5 @@ export const MyCarsButton = styled(RectButton)`
     align-items: center;
 
     background-color: ${theme.colors.main};
-
-    position: absolute;
-    bottom: 13px;
-    right: 22px;
   `}
 `

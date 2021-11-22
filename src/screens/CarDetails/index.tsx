@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigation, useRoute } from '@react-navigation/native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import { StatusBar } from 'react-native'
 
@@ -10,6 +9,8 @@ import {
   interpolate,
   Extrapolate
 } from 'react-native-reanimated'
+
+import useHooks from '../../Hooks'
 
 import { Accessory } from '../../components/Accessory'
 import { BackButton } from '../../components/BackButton'
@@ -27,9 +28,9 @@ type Params = {
 }
 
 export function CarDetails() {
-  const navigation = useNavigation()
-  const route = useRoute()
+  const { route, navigation } = useHooks()
   const { car } = route.params as Params
+
   const statusBarHeight = getStatusBarHeight()
 
   const scrollY = useSharedValue(0)

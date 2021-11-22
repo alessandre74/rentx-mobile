@@ -1,7 +1,8 @@
 import React from 'react'
 import { ActivityIndicator } from 'react-native'
 import { RectButtonProps } from 'react-native-gesture-handler'
-import { useTheme } from 'styled-components'
+
+import useHooks from '../../Hooks'
 import * as S from './styles'
 
 interface Props extends RectButtonProps {
@@ -11,7 +12,7 @@ interface Props extends RectButtonProps {
 }
 
 export function Button({ title, color, enabled = true, loading = false, ...rest }: Props) {
-  const theme = useTheme()
+  const { theme } = useHooks()
   return (
     <S.Container
       color={color}

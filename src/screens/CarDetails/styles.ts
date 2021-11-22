@@ -18,7 +18,6 @@ export const AnimatedHeaderAndSlider = styled(Animated.View)`
     background-color: ${theme.colors.background_secondary};
   `}
 `
-
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;

@@ -23,7 +23,6 @@ export const Header = styled.View`
 
 export const TextWrapper = styled.View`
   width: 100%;
-
   flex: 1;
   justify-content: center;
 `
@@ -33,8 +32,6 @@ export const Title = styled.Text`
     color: ${theme.colors.shape};
     font-family: ${theme.fonts.secondary_600};
     font-size: ${RFValue(30)}px;
-
-    margin-top: 24px;
   `}
 `
 export const SubTitle = styled.Text`

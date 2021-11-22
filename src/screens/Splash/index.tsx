@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import { useNavigation } from '@react-navigation/native'
+
+import useHooks from '../../Hooks'
 import BrandSvg from '../../assets/brand.svg'
 import LogoSvg from '../../assets/logo.svg'
 
@@ -11,12 +12,13 @@ import Animated, {
   Extrapolate,
   runOnJS
 } from 'react-native-reanimated'
+
 import * as S from './styles'
 
 export function Splash() {
   const splashAnimation = useSharedValue(0)
 
-  const navigation = useNavigation()
+  const { navigation } = useHooks()
 
   const brandStyle = useAnimatedStyle(() => {
     return {

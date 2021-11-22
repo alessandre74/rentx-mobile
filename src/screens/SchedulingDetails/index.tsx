@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Alert } from 'react-native'
+import { RFValue } from 'react-native-responsive-fontsize'
 import { Feather } from '@expo/vector-icons'
 import { format } from 'date-fns'
-import { useNavigation, useRoute } from '@react-navigation/native'
-import { useTheme } from 'styled-components'
-import { RFValue } from 'react-native-responsive-fontsize'
-
 import { Accessory } from '../../components/Accessory'
 import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider'
 import { Button } from '../../components/Button'
-
 import { api } from '../../services/api'
 import { CarDTO } from '../../dtos/CarDTO'
 import { formatCurrency } from '../../utils/formatted'
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
 import { getPlatformDate } from '../../utils/getPlatformdate'
+
+import useHooks from '../../Hooks'
 
 import * as S from './styles'
 
@@ -32,9 +30,8 @@ type RentalPeriod = {
 export function SchedulingDetails() {
   const [loading, setLoading] = useState(false)
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod)
-  const theme = useTheme()
-  const navigation = useNavigation()
-  const route = useRoute()
+
+  const { route, navigation, theme } = useHooks()
   const { car, dates } = route.params as Params
 
   const start = format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy')

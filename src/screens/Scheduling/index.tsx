@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { format } from 'date-fns'
 import { StatusBar } from 'react-native'
-import { useNavigation, useRoute } from '@react-navigation/native'
-import { useTheme } from 'styled-components'
-import { CarDTO } from '../../dtos/CarDTO'
 
+import useHooks from '../../Hooks'
+import ArrowSvg from '../../assets/arrow.svg'
+
+import { CarDTO } from '../../dtos/CarDTO'
 import { getPlatformDate } from '../../utils/getPlatformdate'
 import { BackButton } from '../../components/BackButton'
 import { Button } from '../../components/Button'
 import { Calendar, DayProps, generateIntervals, MarkedDateProps } from '../../components/Calendar'
 
-import ArrowSvg from '../../assets/arrow.svg'
 import * as S from './styles'
 
 type RentalPeriod = {
@@ -27,9 +27,7 @@ export function Scheduling() {
   const [makedDates, setMakedDates] = useState<MarkedDateProps>({} as MarkedDateProps)
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod)
 
-  const theme = useTheme()
-  const navigation = useNavigation()
-  const route = useRoute()
+  const { route, navigation, theme } = useHooks()
   const { car } = route.params as Params
 
   function handleBack() {
@@ -69,7 +67,7 @@ export function Scheduling() {
         <BackButton onPress={handleBack} color={theme.colors.shape} />
 
         <S.Title>
-          Escolha uma {'\n'} data de início e {'\n'} fim do aluguel
+          Escolha uma {'\n'}data de início e {'\n'}fim do aluguel
         </S.Title>
 
         <S.RentalPeriod>
