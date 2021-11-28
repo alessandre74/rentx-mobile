@@ -6,6 +6,10 @@ interface ButtonProps extends RectButtonProps {
   color?: string
 }
 
+type ButtonTextProps = {
+  light: boolean
+}
+
 export const Container = styled(RectButton)<ButtonProps>`
   ${({ theme, color }) => css`
     width: 100%;
@@ -17,10 +21,10 @@ export const Container = styled(RectButton)<ButtonProps>`
     background-color: ${color ? color : theme.colors.main};
   `}
 `
-export const Title = styled.Text`
-  ${({ theme }) => css`
+export const Title = styled.Text<ButtonTextProps>`
+  ${({ theme, light }) => css`
     font-family: ${theme.fonts.primary_500};
     font-size: ${RFValue(15)}px;
-    color: ${theme.colors.shape};
+    color: ${light ? theme.colors.header : theme.colors.shape};
   `}
 `

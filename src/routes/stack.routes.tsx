@@ -9,6 +9,7 @@ import { SchedulingComplete } from '../screens/SchedulingComplete'
 import { CarDTO } from '../dtos/CarDTO'
 import { MyCars } from '../screens/MyCars'
 import { Splash } from '../screens/Splash'
+import { SignIn } from '../screens/SignIn'
 
 declare global {
   namespace ReactNavigation {
@@ -27,8 +28,8 @@ const { Navigator, Screen } = createStackNavigator()
 
 export function StackRoutes() {
   return (
-    <Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
-      <Screen name="Splash" component={Splash} />
+    <Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
+      <Screen name="SignIn" component={SignIn} />
       <Screen name="Home" component={Home} options={{ gestureEnabled: false }} />
       <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Scheduling" component={Scheduling} />
