@@ -30,6 +30,7 @@ export function StackRoutes() {
   return (
     <Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
       <Screen name="SignIn" component={SignIn} />
+      {/* <Screen name="Splash" component={Splash} /> */}
       <Screen name="Home" component={Home} options={{ gestureEnabled: false }} />
       <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Scheduling" component={Scheduling} />

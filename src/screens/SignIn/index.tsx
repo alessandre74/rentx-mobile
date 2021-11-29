@@ -1,12 +1,15 @@
 import React from 'react'
 import { StatusBar } from 'react-native'
+import { useTheme } from 'styled-components'
+
 import { Button } from '../../components/Button'
-import useHooks from '../../Hooks'
+import { Input } from '../../components/Input'
+import { Spacer } from '../../components/Spacer'
 
 import * as S from './styles'
 
 export function SignIn() {
-  const { theme } = useHooks()
+  const theme = useTheme()
 
   return (
     <S.Container>
@@ -16,8 +19,15 @@ export function SignIn() {
         <S.SubTitle>Faça seu login para começar {'\n'}uma experiência incrível</S.SubTitle>
       </S.Header>
 
+      <S.Form>
+        <Input iconName="mail" />
+      </S.Form>
+
       <S.Footer>
         <Button title="Login" onPress={() => {}} enabled={false} loading={false} />
+
+        <Spacer />
+
         <Button
           title="Criar conta gratuita"
           color={theme.colors.background_secondary}
