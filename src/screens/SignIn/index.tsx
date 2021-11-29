@@ -4,6 +4,7 @@ import { useTheme } from 'styled-components'
 
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
+import { PasswordInput } from '../../components/PasswordInput'
 import { Spacer } from '../../components/Spacer'
 
 import * as S from './styles'
@@ -27,6 +28,10 @@ export function SignIn() {
           autoCorrect={false}
           autoCapitalize="none"
         />
+
+        <Spacer />
+
+        <PasswordInput iconName="lock" placeholder="Senha" />
       </S.Form>
 
       <S.Footer>
