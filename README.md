@@ -16,7 +16,7 @@ RentX é um aplicativo de aluguel de carros desenvolvido no curso Ignite da Rock
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 - [React Native Calendars](https://github.com/wix/react-native-calendars)
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
-- [Lottie](https://lottiefiles.com/)
+- [LottieFiles](https://lottiefiles.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Styled Components](https://styled-components.com/)
 
