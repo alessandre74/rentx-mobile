@@ -1,6 +1,27 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 export const Container = styled.View`
-  width: 100%;
-  height: 50px;
+  flex-direction: row;
+`
+
+export const IconContainer = styled.View`
+  ${({ theme }) => css`
+    height: 56px;
+    width: 55px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2px;
+    background-color: ${theme.colors.background_secondary};
+  `}
+`
+export const InputText = styled.TextInput`
+  ${({ theme }) => css`
+    flex: 1;
+    padding: 0 23px;
+    color: ${theme.colors.text};
+    font-size: ${RFValue(15)}px;
+    font-family: ${theme.fonts.primary_400};
+    background-color: ${theme.colors.background_secondary};
+  `}
 `
