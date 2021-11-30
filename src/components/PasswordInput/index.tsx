@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextInputProps } from 'react-native'
+import { TextInputProps, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import { Feather } from '@expo/vector-icons'
 
@@ -11,7 +11,7 @@ interface PasswordInputProps extends TextInputProps {
 }
 
 export function PasswordInput({ iconName, value, ...rest }: PasswordInputProps) {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const [isPasswordVisible, setIsPasswordVisible] = useState(true)
   const [isFocused, setIsFocused] = useState(false)
   const [isFilled, setIsFilled] = useState(false)
 
@@ -31,8 +31,8 @@ export function PasswordInput({ iconName, value, ...rest }: PasswordInputProps) 
   }
 
   return (
-    <S.Container isFocused={isFocused}>
-      <S.IconContainer>
+    <S.Container>
+      <S.IconContainer isFocused={isFocused}>
         <Feather
           name={iconName}
           size={24}
@@ -45,19 +45,22 @@ export function PasswordInput({ iconName, value, ...rest }: PasswordInputProps) 
         secureTextEntry={isPasswordVisible}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
+        isFocused={isFocused}
       />
 
-      <S.PasswordVisibilityButton
-        onPress={handlePasswordVisible}
-        activeOpacity={1}
-        rippleColor={theme.colors.background_secondary}
-      >
-        <Feather
-          name={isPasswordVisible ? 'eye' : 'eye-off'}
-          size={24}
-          color={theme.colors.text_detail}
-        />
-      </S.PasswordVisibilityButton>
+      <S.ContainerPasswordVisibilityButton isFocused={isFocused}>
+        <S.PasswordVisibilityButton
+          onPress={handlePasswordVisible}
+          activeOpacity={1}
+          rippleColor={theme.colors.background_secondary}
+        >
+          <Feather
+            name={isPasswordVisible ? 'eye' : 'eye-off'}
+            size={24}
+            color={theme.colors.text_detail}
+          />
+        </S.PasswordVisibilityButton>
+      </S.ContainerPasswordVisibilityButton>
     </S.Container>
   )
 }

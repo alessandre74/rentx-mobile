@@ -26,8 +26,8 @@ export function Input({ iconName, value, ...rest }: InputProps) {
   }
 
   return (
-    <S.Container isFocused={isFocused}>
-      <S.IconContainer>
+    <S.Container>
+      <S.IconContainer isFocused={isFocused}>
         <Feather
           name={iconName}
           size={24}
@@ -35,7 +35,12 @@ export function Input({ iconName, value, ...rest }: InputProps) {
         />
       </S.IconContainer>
 
-      <S.InputText onFocus={handleInputFocus} onBlur={handleInputBlur} {...rest} />
+      <S.InputText
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+        isFocused={isFocused}
+        {...rest}
+      />
     </S.Container>
   )
 }
