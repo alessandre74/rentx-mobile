@@ -23,7 +23,7 @@ export function SignIn() {
   const { theme, navigation } = useHooks()
 
   function handleNewAccount() {
-    navigation.navigate('SignUp')
+    navigation.navigate('SignUpFirstStep')
   }
 
   async function hanldeSignIn() {

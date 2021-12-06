@@ -4,21 +4,17 @@ import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-
 import { BackButton } from '../../../components/BackButton'
 import { Bullet } from '../../../components/Bullet'
 import { Button } from '../../../components/Button'
-import { Input } from '../../../components/Input'
+import { PasswordInput } from '../../../components/PasswordInput'
 import { Spacer } from '../../../components/Spacer'
 
 import useHooks from '../../../Hooks'
-import * as S from '../SignUpFirstStep/styles'
+import * as S from '../SignUpSecondStep/styles'
 
-export function SignUpFirstStep() {
-  const { navigation } = useHooks()
+export function SignUpSecondStep() {
+  const { theme, navigation } = useHooks()
 
   function handleBack() {
     navigation.goBack()
-  }
-
-  function handleNextStep() {
-    navigation.navigate('SignUpSecondStep')
   }
 
   return (
@@ -41,16 +37,14 @@ export function SignUpFirstStep() {
           </S.SubTitle>
 
           <S.Form>
-            <S.FormTitle>1. Dados</S.FormTitle>
+            <S.FormTitle>2. Senha</S.FormTitle>
 
-            <Input iconName="user" placeholder="Nome" />
+            <PasswordInput iconName="lock" placeholder="Senha" />
             <Spacer />
-            <Input iconName="mail" placeholder="email" keyboardType="email-address" />
-            <Spacer />
-            <Input iconName="credit-card" placeholder="CNH" keyboardType="numeric" />
+            <PasswordInput iconName="lock" placeholder="Repetir Senha" />
           </S.Form>
 
-          <Button title="Próximo" onPress={handleNextStep} />
+          <Button title="Cadastrar" color={theme.colors.success} />
         </S.Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
