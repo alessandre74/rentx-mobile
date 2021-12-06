@@ -6,7 +6,8 @@ import {
   Keyboard,
   Alert
 } from 'react-native'
-import { useTheme } from 'styled-components'
+
+import useHooks from '../../Hooks'
 import * as Yup from 'yup'
 
 import { Button } from '../../components/Button'
@@ -19,7 +20,11 @@ import * as S from './styles'
 export function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const theme = useTheme()
+  const { theme, navigation } = useHooks()
+
+  function handleNewAccount() {
+    navigation.navigate('SignUp')
+  }
 
   async function hanldeSignIn() {
     try {
@@ -79,8 +84,8 @@ export function SignIn() {
               title="Criar conta gratuita"
               color={theme.colors.background_secondary}
               light
-              onPress={() => {}}
-              enabled={false}
+              onPress={handleNewAccount}
+              enabled={true}
               loading={false}
             />
           </S.Footer>
