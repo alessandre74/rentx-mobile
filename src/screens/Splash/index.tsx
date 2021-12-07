@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import useHooks from '../../Hooks'
+import useHooks from '../../Hooks/useHooks'
 import BrandSvg from '../../assets/brand.svg'
 import LogoSvg from '../../assets/logo.svg'
 

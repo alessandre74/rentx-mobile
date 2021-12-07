@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 
-import useHooks from '../../../Hooks'
+import useHooks from '../../../Hooks/useHooks'
 import { api } from '../../../services/api'
 import { UserDTO } from '../../../dtos/userDTO'
 
@@ -28,6 +28,7 @@ export function SignUpSecondStep() {
     if (!password || !passwordConfirm) {
       return Alert.alert('Inform a senha e a confirmação')
     }
+
     if (password != passwordConfirm) {
       return Alert.alert('As senhas não são iguais')
     }

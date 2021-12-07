@@ -2,7 +2,7 @@ import React from 'react'
 import { Feather } from '@expo/vector-icons'
 import { Calendar as CustomCalendar, LocaleConfig } from 'react-native-calendars'
 
-import useHooks from '../../Hooks'
+import useHooks from '../../Hooks/useHooks'
 
 import { ptBR } from './localeConfig'
 import { generateIntervals } from './generateIntervals'

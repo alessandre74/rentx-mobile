@@ -11,7 +11,7 @@ import Animated, {
   withSpring
 } from 'react-native-reanimated'
 
-import useHooks from '../../Hooks'
+import useHooks from '../../Hooks/useHooks'
 import Logo from '../../assets/logo.svg'
 
 import { api } from '../../services/api'

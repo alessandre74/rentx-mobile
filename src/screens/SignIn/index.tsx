@@ -7,20 +7,22 @@ import {
   Alert
 } from 'react-native'
 
-import useHooks from '../../Hooks'
-import * as Yup from 'yup'
+import useHooks from '../../Hooks/useHooks'
 
+import { useAuth } from '../../Hooks/Auth/auth'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { PasswordInput } from '../../components/PasswordInput'
 import { Spacer } from '../../components/Spacer'
 
+import * as Yup from 'yup'
 import * as S from './styles'
 
 export function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { theme, navigation } = useHooks()
+  const { signIn } = useAuth()
 
   function handleNewAccount() {
     navigation.navigate('SignUpFirstStep')
@@ -35,6 +37,8 @@ export function SignIn() {
 
       await schema.validate({ email, password })
       Alert.alert('Tudo certo')
+
+      signIn({ email, password })
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message)

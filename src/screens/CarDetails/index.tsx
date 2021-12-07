@@ -10,7 +10,7 @@ import {
   Extrapolate
 } from 'react-native-reanimated'
 
-import useHooks from '../../Hooks'
+import useHooks from '../../Hooks/useHooks'
 
 import { Accessory } from '../../components/Accessory'
 import { BackButton } from '../../components/BackButton'

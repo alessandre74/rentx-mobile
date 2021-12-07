@@ -2,7 +2,7 @@ import React from 'react'
 import { ActivityIndicator } from 'react-native'
 import { RectButtonProps } from 'react-native-gesture-handler'
 
-import useHooks from '../../Hooks'
+import useHooks from '../../Hooks/useHooks'
 import * as S from './styles'
 
 interface Props extends RectButtonProps {

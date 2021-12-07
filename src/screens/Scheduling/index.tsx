@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { format } from 'date-fns'
 import { StatusBar } from 'react-native'
 
-import useHooks from '../../Hooks'
+import useHooks from '../../Hooks/useHooks'
 import ArrowSvg from '../../assets/arrow.svg'
 
 import { CarDTO } from '../../dtos/CarDTO'

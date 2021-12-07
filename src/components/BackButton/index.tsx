@@ -2,7 +2,7 @@ import React from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 import { BorderlessButtonProps } from 'react-native-gesture-handler'
 
-import useHooks from '../../Hooks'
+import useHooks from '../../Hooks/useHooks'
 
 import * as S from './styles'
 

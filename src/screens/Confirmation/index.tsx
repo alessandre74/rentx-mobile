@@ -1,7 +1,7 @@
 import React from 'react'
 import { StatusBar, useWindowDimensions } from 'react-native'
 
-import useHooks from '../../Hooks'
+import useHooks from '../../Hooks/useHooks'
 import LogoSvg from '../../assets/logo_background_gray.svg'
 import DoneSvg from '../../assets/done.svg'
 
@@ -12,7 +12,7 @@ import * as S from './styles'
 type Params = {
   title: string
   message: string
-  nextScreenRoute: string | any
+  nextScreenRoute: any
 }
 
 export function Confirmation() {

@@ -7,8 +7,9 @@ import { Bullet } from '../../../components/Bullet'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { Spacer } from '../../../components/Spacer'
+import { useAuth } from '../../../Hooks/Auth/auth'
 
-import useHooks from '../../../Hooks'
+import useHooks from '../../../Hooks/useHooks'
 import * as S from '../SignUpFirstStep/styles'
 
 export function SignUpFirstStep() {
@@ -17,6 +18,9 @@ export function SignUpFirstStep() {
   const [driverLicense, setDriveLicense] = useState('')
   const { navigation } = useHooks()
 
+  const { user } = useAuth()
+
+  console.log('Usuário autenticado', user)
   function handleBack() {
     navigation.goBack()
   }
