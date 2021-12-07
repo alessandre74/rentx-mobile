@@ -9,13 +9,20 @@ import { ConfirmButton } from '../../components/ConfirmButton'
 
 import * as S from './styles'
 
-export function SchedulingComplete() {
+type Params = {
+  title: string
+  message: string
+  nextScreenRoute: string | any
+}
+
+export function Confirmation() {
   const { width } = useWindowDimensions()
 
-  const { navigation } = useHooks()
+  const { navigation, route } = useHooks()
+  const { title, message, nextScreenRoute } = route.params as Params
 
   function handleConfirm() {
-    navigation.navigate('Home')
+    navigation.navigate(nextScreenRoute)
   }
   return (
     <S.Container>
@@ -24,11 +31,9 @@ export function SchedulingComplete() {
 
       <S.Content>
         <DoneSvg width={80} height={80} />
-        <S.Title>Carro alugado!</S.Title>
+        <S.Title>{title}</S.Title>
 
-        <S.Message>
-          Agora você só precisa ir {'\n'}até a concessionária da RENTX{'\n'}pegar o seu automóvel
-        </S.Message>
+        <S.Message>{message}</S.Message>
 
         <S.Footer>
           <ConfirmButton title="OK" onPress={handleConfirm} />
