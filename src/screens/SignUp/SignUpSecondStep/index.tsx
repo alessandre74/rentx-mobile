@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 
+import useHooks from '../../../Hooks'
+import { api } from '../../../services/api'
 import { UserDTO } from '../../../dtos/userDTO'
 
 import { BackButton } from '../../../components/BackButton'
@@ -9,7 +11,6 @@ import { Button } from '../../../components/Button'
 import { PasswordInput } from '../../../components/PasswordInput'
 import { Spacer } from '../../../components/Spacer'
 
-import useHooks from '../../../Hooks'
 import * as S from '../SignUpSecondStep/styles'
 
 export function SignUpSecondStep() {
@@ -23,7 +24,7 @@ export function SignUpSecondStep() {
     navigation.goBack()
   }
 
-  function handleRegister() {
+  async function handleRegister() {
     if (!password || !passwordConfirm) {
       return Alert.alert('Inform a senha e a confirmação')
     }
@@ -31,11 +32,24 @@ export function SignUpSecondStep() {
       return Alert.alert('As senhas não são iguais')
     }
 
-    navigation.navigate('Confirmation', {
-      nextScreenRoute: 'SignIn',
-      title: 'Conta criada!',
-      message: `Agora é só fazer login \ne aproveitar.`
-    })
+    try {
+      const data = {
+        name: user.name,
+        email: user.email,
+        driver_license: user.driverLicense,
+        password
+      }
+
+      await api.post('/users', { ...data })
+
+      navigation.navigate('Confirmation', {
+        nextScreenRoute: 'SignIn',
+        title: 'Conta criada!',
+        message: `Agora é só fazer login \ne aproveitar.`
+      })
+    } catch (error) {
+      Alert.alert('Opa', 'Não foi possível cadastar')
+    }
   }
 
   return (
