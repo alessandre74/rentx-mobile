@@ -7,6 +7,7 @@ import { Scheduling } from '../screens/Scheduling'
 import { SchedulingDetails } from '../screens/SchedulingDetails'
 import { SchedulingComplete } from '../screens/SchedulingComplete'
 import { CarDTO } from '../dtos/CarDTO'
+import { UserDTO } from '../dtos/userDTO'
 import { MyCars } from '../screens/MyCars'
 import { Splash } from '../screens/Splash'
 import { SignIn } from '../screens/SignIn'
@@ -18,7 +19,7 @@ declare global {
     interface RootParamList {
       SignUp: undefined
       SignUpFirstStep: undefined
-      SignUpSecondStep: undefined
+      SignUpSecondStep: UserDTO
       Home: undefined
       CarDetails: { car: CarDTO }
       MyCars: undefined

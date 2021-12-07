@@ -29,8 +29,8 @@ export function SignIn() {
   async function hanldeSignIn() {
     try {
       const schema = Yup.object().shape({
-        email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
-        password: Yup.string().required('A Senha é obrigatória!')
+        password: Yup.string().required('A Senha é obrigatória!'),
+        email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido')
       })
 
       await schema.validate({ email, password })
