@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
-import * as Yup from 'yup'
 
 import { BackButton } from '../../../components/BackButton'
 import { Bullet } from '../../../components/Bullet'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { Spacer } from '../../../components/Spacer'
-import { useAuth } from '../../../Hooks/Auth/auth'
 
 import useHooks from '../../../Hooks/useHooks'
+
+import * as Yup from 'yup'
 import * as S from '../SignUpFirstStep/styles'
 
 export function SignUpFirstStep() {
@@ -18,9 +18,6 @@ export function SignUpFirstStep() {
   const [driverLicense, setDriveLicense] = useState('')
   const { navigation } = useHooks()
 
-  const { user } = useAuth()
-
-  console.log('Usuário autenticado', user)
   function handleBack() {
     navigation.goBack()
   }

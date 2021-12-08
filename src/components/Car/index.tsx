@@ -22,8 +22,8 @@ export function Car({ data, ...rest }: Props) {
 
         <S.About>
           <S.Rent>
-            <S.Period>{data.rent.period}</S.Period>
-            <S.Price>{formatCurrency(data.rent.price)}</S.Price>
+            <S.Period>{data.period}</S.Period>
+            <S.Price>{formatCurrency(data.price)}</S.Price>
           </S.Rent>
 
           <S.type>

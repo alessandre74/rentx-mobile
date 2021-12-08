@@ -37,7 +37,7 @@ export function SchedulingDetails() {
   const start = format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy')
   const end = format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy')
 
-  const rentTotal = Number(dates.length * car.rent.price)
+  const rentTotal = Number(dates.length * car.price)
 
   function handleBack() {
     navigation.goBack()
@@ -95,8 +95,8 @@ export function SchedulingDetails() {
           </S.Description>
 
           <S.Rent>
-            <S.Period>{car.rent.period}</S.Period>
-            <S.Price>{formatCurrency(car.rent.price)}</S.Price>
+            <S.Period>{car.period}</S.Period>
+            <S.Price>{formatCurrency(car.price)}</S.Price>
           </S.Rent>
         </S.Details>
 
@@ -132,7 +132,7 @@ export function SchedulingDetails() {
           <S.RentaPriceLabel>TOTAL</S.RentaPriceLabel>
           <S.RentalPriceDetails>
             <S.RentalPriceQuota>
-              {`${formatCurrency(car.rent.price)} x${dates.length} ${
+              {`${formatCurrency(car.price)} x${dates.length} ${
                 dates.length === 1 ? 'diária' : 'diárias'
               }`}
             </S.RentalPriceQuota>

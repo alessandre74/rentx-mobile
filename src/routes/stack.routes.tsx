@@ -18,15 +18,16 @@ import { SignUpSecondStep } from '../screens/SignUp/SignUpSecondStep'
 declare global {
   namespace ReactNavigation {
     interface RootParamList {
-      SignUp: undefined
+      Splash: undefined
+      SignIn: undefined
       SignUpFirstStep: undefined
       SignUpSecondStep: UserDTO
       Home: undefined
       CarDetails: { car: CarDTO }
-      MyCars: undefined
       Scheduling: { car: CarDTO }
       SchedulingDetails: { car: CarDTO; dates: string[] }
       Confirmation: ScreenDTO
+      MyCars: undefined
     }
   }
 }
@@ -35,7 +36,7 @@ const { Navigator, Screen } = createStackNavigator()
 
 export function StackRoutes() {
   return (
-    <Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
+    <Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
       <Screen name="Splash" component={Splash} />
       <Screen name="SignIn" component={SignIn} />
       <Screen name="SignUpFirstStep" component={SignUpFirstStep} />
