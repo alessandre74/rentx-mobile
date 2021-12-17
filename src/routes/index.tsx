@@ -8,7 +8,6 @@ import { AuthRoutes } from './auth.routes'
 import { CarDTO } from '../dtos/CarDTO'
 import { UserDTO } from '../dtos/userDTO'
 import { ScreenDTO } from '../dtos/ScreenDTO'
-import { ImageCard } from '../screens/ImageCard'
 
 declare global {
   namespace ReactNavigation {
@@ -29,5 +28,6 @@ declare global {
 
 export function Routes() {
   const { user } = useAuth()
-  return <NavigationContainer>{user ? <AppTabRoutes /> : <AuthRoutes />}</NavigationContainer>
+  console.log(user)
+  return <NavigationContainer>{user.id ? <AppTabRoutes /> : <AuthRoutes />}</NavigationContainer>
 }

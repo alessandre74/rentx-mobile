@@ -12,16 +12,16 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		934D739F2769C28000F9571D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D739E2769C28000F9571D /* File.swift */; };
-		9396A70A2769CC670066BB46 /* libWatermelonDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9396A7092769CC610066BB46 /* libWatermelonDB.a */; };
+		93AB6EEE276CDC300017903F /* libWatermelonDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93AB6EED276CDC2C0017903F /* libWatermelonDB.a */; };
 		96905EF65AED1B983A6B3ABC /* libPods-rentx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-rentx.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9396A7082769CC610066BB46 /* PBXContainerItemProxy */ = {
+		93AB6EEC276CDC2C0017903F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9396A7042769CC610066BB46 /* WatermelonDB.xcodeproj */;
+			containerPortal = 93AB6EE8276CDC2C0017903F /* WatermelonDB.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 6E660D5E213BCCD300189354;
 			remoteInfo = WatermelonDB;
@@ -40,7 +40,7 @@
 		6C2E3173556A471DD304B334 /* Pods-rentx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rentx.debug.xcconfig"; path = "Target Support Files/Pods-rentx/Pods-rentx.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-rentx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rentx.release.xcconfig"; path = "Target Support Files/Pods-rentx/Pods-rentx.release.xcconfig"; sourceTree = "<group>"; };
 		934D739E2769C28000F9571D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		9396A7042769CC610066BB46 /* WatermelonDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WatermelonDB.xcodeproj; path = "../node_modules/@nozbe/watermelondb/native/ios/WatermelonDB.xcodeproj"; sourceTree = "<group>"; };
+		93AB6EE8276CDC2C0017903F /* WatermelonDB.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WatermelonDB.xcodeproj; path = "../node_modules/@nozbe/watermelondb/native/ios/WatermelonDB.xcodeproj"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = rentx/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9396A70A2769CC670066BB46 /* libWatermelonDB.a in Frameworks */,
+				93AB6EEE276CDC300017903F /* libWatermelonDB.a in Frameworks */,
 				96905EF65AED1B983A6B3ABC /* libPods-rentx.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,7 +78,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9396A7042769CC610066BB46 /* WatermelonDB.xcodeproj */,
+				93AB6EE8276CDC2C0017903F /* WatermelonDB.xcodeproj */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-rentx.a */,
 			);
@@ -124,10 +124,10 @@
 			name = rentx;
 			sourceTree = "<group>";
 		};
-		9396A7052769CC610066BB46 /* Products */ = {
+		93AB6EE9276CDC2C0017903F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9396A7092769CC610066BB46 /* libWatermelonDB.a */,
+				93AB6EED276CDC2C0017903F /* libWatermelonDB.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,8 +209,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 9396A7052769CC610066BB46 /* Products */;
-					ProjectRef = 9396A7042769CC610066BB46 /* WatermelonDB.xcodeproj */;
+					ProductGroup = 93AB6EE9276CDC2C0017903F /* Products */;
+					ProjectRef = 93AB6EE8276CDC2C0017903F /* WatermelonDB.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -221,11 +221,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		9396A7092769CC610066BB46 /* libWatermelonDB.a */ = {
+		93AB6EED276CDC2C0017903F /* libWatermelonDB.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libWatermelonDB.a;
-			remoteRef = 9396A7082769CC610066BB46 /* PBXContainerItemProxy */;
+			remoteRef = 93AB6EEC276CDC2C0017903F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

@@ -2,15 +2,12 @@ import { ReactNode } from 'react'
 
 type User = {
   id: string
+  user_id: string
   name: string
   email: string
   driver_license: string
   avatar: string
-}
-
-type AuthState = {
   token: string
-  user: User
 }
 
 type SignInCredencials = {
@@ -27,4 +24,4 @@ type AuthProviderProps = {
   children: ReactNode
 }
 
-export { User, AuthState, SignInCredencials, AuthContextData, AuthProviderProps }
+export { User, SignInCredencials, AuthContextData, AuthProviderProps }
