@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   StatusBar,
   KeyboardAvoidingView,
@@ -14,6 +14,8 @@ import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { PasswordInput } from '../../components/PasswordInput'
 import { Spacer } from '../../components/Spacer'
+
+import { database } from '../../database'
 
 import * as Yup from 'yup'
 import * as S from './styles'
@@ -46,6 +48,16 @@ export function SignIn() {
       }
     }
   }
+
+  useEffect(() => {
+    async function loadData() {
+      const userColletion = database.get('users')
+      const users = userColletion.query().fetch()
+      console.log(users)
+    }
+
+    loadData()
+  }, [])
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
