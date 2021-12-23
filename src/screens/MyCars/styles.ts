@@ -13,12 +13,15 @@ export const Header = styled.View`
   ${({ theme }) => css`
     width: 100%;
     height: 325px;
-
-    background-color: ${theme.colors.header};
-
-    padding: 25px;
+    padding: 24px;
     padding-top: ${getStatusBarHeight() + 30}px;
+    background-color: ${theme.colors.header};
   `}
+`
+
+export const HeaderBackButton = styled.View`
+  height: 31px;
+  justify-content: center;
 `
 
 export const TextWrapper = styled.View`

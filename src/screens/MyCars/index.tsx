@@ -48,9 +48,11 @@ export function MyCars() {
 
   return (
     <S.Container>
+      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
       <S.Header>
-        <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-        <BackButton onPress={handleBack} color={theme.colors.shape} />
+        <S.HeaderBackButton>
+          <BackButton onPress={handleBack} color={theme.colors.shape} />
+        </S.HeaderBackButton>
 
         <S.TextWrapper>
           <S.Title>Seus agendamentos, {'\n'}estão aqui.</S.Title>

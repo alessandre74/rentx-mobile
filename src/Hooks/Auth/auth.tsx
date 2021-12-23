@@ -30,7 +30,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         })
       })
 
-      setData({ ...user })
+      setData({ ...user, token })
     } catch (error) {
       throw new Error(error)
     }
