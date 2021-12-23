@@ -20,7 +20,7 @@ export const Header = styled.View`
 `
 
 export const HeaderBackButton = styled.View`
-  height: 31px;
+  height: 32px;
   justify-content: center;
 `
 

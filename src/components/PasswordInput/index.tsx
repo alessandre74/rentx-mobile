@@ -46,6 +46,7 @@ export function PasswordInput({ iconName, value, ...rest }: PasswordInputProps) 
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         isFocused={isFocused}
+        autoCorrect={false}
       />
 
       <S.ContainerPasswordVisibilityButton isFocused={isFocused}>
