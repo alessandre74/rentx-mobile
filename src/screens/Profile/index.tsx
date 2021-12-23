@@ -1,20 +1,24 @@
-import React from 'react'
-import { StatusBar } from 'react-native'
+import React, { useState } from 'react'
 import { Feather } from '@expo/vector-icons'
 
 import { BackButton } from '../../components/BackButton'
 import useHooks from '../../Hooks/useHooks'
 
-import mike from '../../assets/mike.png'
 import * as S from './styles'
 
 export function Profile() {
+  const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit')
+
   const { theme, navigation } = useHooks()
 
   function handleBack() {
     navigation.goBack()
   }
   function handleSinOut() {}
+
+  function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
+    setOption(optionSelected)
+  }
 
   return (
     <S.Container>
@@ -37,6 +41,20 @@ export function Profile() {
           </S.PhotoButton>
         </S.PhotoContainer>
       </S.Header>
+
+      <S.Content>
+        <S.Options>
+          <S.Option active={option === 'dataEdit'} onPress={() => handleOptionChange('dataEdit')}>
+            <S.OptionTitle active={option === 'dataEdit'}>Dados</S.OptionTitle>
+          </S.Option>
+          <S.Option
+            active={option === 'passwordEdit'}
+            onPress={() => handleOptionChange('passwordEdit')}
+          >
+            <S.OptionTitle active={option === 'passwordEdit'}>Trocar senha</S.OptionTitle>
+          </S.Option>
+        </S.Options>
+      </S.Content>
     </S.Container>
   )
 }
