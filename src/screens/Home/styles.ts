@@ -35,7 +35,7 @@ export const TotalCars = styled.Text`
   `}
 `
 export const CarList = styled(FlatList as new () => FlatList<CarDTO>).attrs({
-  contenTContainerStyle: { padding: 24 }
+  contentContainerStyle: { padding: 24 }
 })`
   ${({ theme }) => css`
     font-size: ${RFValue(15)}px;

@@ -42,11 +42,7 @@ export function Profile() {
               </S.LogoutButton>
             </S.HeaderTop>
             <S.PhotoContainer>
-              <S.Photo
-                source={{
-                  uri: 'https://user-images.githubusercontent.com/52423583/147198602-6aeb6e3c-ae7c-42bd-a422-d5e95e9a1fde.png'
-                }}
-              />
+              <S.Photo source={require('../../assets/mike.png')} />
               <S.PhotoButton onPress={() => {}}>
                 <Feather name="camera" size={24} color={theme.colors.shape} />
               </S.PhotoButton>
