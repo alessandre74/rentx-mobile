@@ -2,10 +2,10 @@ import React from 'react'
 import * as S from './styles'
 
 export type SpacerProps = {
-  height?: number
-  width?: number
+  direction_?: 'row' | 'column'
+  space?: number
 }
 
-export function Spacer({ height = 8, width = 100 }: SpacerProps) {
-  return <S.Container height={height} width={width} />
+export function Spacer({ direction_ = 'column', space = 8 }: SpacerProps) {
+  return <S.Container direction_={direction_} space={space} />
 }

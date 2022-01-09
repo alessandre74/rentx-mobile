@@ -23,7 +23,7 @@ export function Profile() {
   function handleBack() {
     navigation.goBack()
   }
-  function handleSinOut() {}
+  function handleSignOut() {}
 
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
     setOption(optionSelected)
@@ -37,7 +37,7 @@ export function Profile() {
             <S.HeaderTop>
               <BackButton color={theme.colors.shape} onPress={handleBack} />
               <S.HeaderTitle>Editar Perfil</S.HeaderTitle>
-              <S.LogoutButton onPress={handleSinOut}>
+              <S.LogoutButton onPress={handleSignOut}>
                 <Feather name="power" size={24} color={theme.colors.shape} />
               </S.LogoutButton>
             </S.HeaderTop>
@@ -73,9 +73,13 @@ export function Profile() {
                   autoCorrect={false}
                   defaultValue={user.name}
                 />
+
                 <Spacer />
+
                 <Input iconName="mail" editable={false} defaultValue={user.email} />
+
                 <Spacer />
+
                 <Input
                   iconName="credit-card"
                   placeholder="CNH"
