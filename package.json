@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "androide": "expo run:android",
-    "android": "react-native run-android --simulator=\"iPhone 12 Pro\"",
+    "android": "react-native run-android",
     "iose": "expo run:ios",
     "ios": "react-native run-ios --simulator=\"iPhone 12 Pro\"",
     "web": "expo start --web",
@@ -24,6 +24,7 @@
     "expo": "~43.0.2",
     "expo-app-loading": "~1.2.1",
     "expo-font": "~10.0.3",
+    "expo-image-picker": "~11.0.3",
     "expo-splash-screen": "~0.13.5",
     "expo-status-bar": "~1.1.0",
     "expo-updates": "~0.10.15",

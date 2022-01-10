@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Feather } from '@expo/vector-icons'
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import * as ImagePicker from 'expo-image-picker'
+
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
 
 import useHooks from '../../Hooks/useHooks'
@@ -15,9 +17,12 @@ import { useAuth } from '../../Hooks/Auth/auth'
 
 KeyboardAvoidingView
 export function Profile() {
-  const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit')
-
   const { user } = useAuth()
+  const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit')
+  const [avatar, setAvatar] = useState(user.avatar)
+  const [name, setName] = useState(user.name)
+  const [driveLicense, setDriveLicense] = useState(user.driver_license)
+
   const { theme, navigation } = useHooks()
 
   function handleBack() {
@@ -27,6 +32,23 @@ export function Profile() {
 
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
     setOption(optionSelected)
+  }
+
+  async function handleAvatarSelect() {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 4],
+      quality: 1
+    })
+
+    if (result.cancelled) {
+      return
+    }
+
+    if (result.uri) {
+      setAvatar(result.uri)
+    }
   }
 
   return (
@@ -42,8 +64,8 @@ export function Profile() {
               </S.LogoutButton>
             </S.HeaderTop>
             <S.PhotoContainer>
-              <S.Photo source={require('../../assets/mike.png')} />
-              <S.PhotoButton onPress={() => {}}>
+              {!!avatar && <S.Photo source={{ uri: avatar }} />}
+              <S.PhotoButton onPress={handleAvatarSelect}>
                 <Feather name="camera" size={24} color={theme.colors.shape} />
               </S.PhotoButton>
             </S.PhotoContainer>
@@ -72,6 +94,7 @@ export function Profile() {
                   placeholder="Nome"
                   autoCorrect={false}
                   defaultValue={user.name}
+                  onChangeText={setName}
                 />
 
                 <Spacer />
@@ -85,6 +108,7 @@ export function Profile() {
                   placeholder="CNH"
                   keyboardType="numeric"
                   defaultValue={user.driver_license}
+                  onChangeText={setDriveLicense}
                 />
               </S.Section>
             ) : (

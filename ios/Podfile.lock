@@ -11,6 +11,8 @@ PODS:
     - ExpoModulesCore
   - EXFont (10.0.3):
     - ExpoModulesCore
+  - EXImagePicker (11.0.3):
+    - ExpoModulesCore
   - EXJSONUtils (0.2.0)
   - EXKeepAwake (10.0.0):
     - ExpoModulesCore
@@ -339,9 +341,6 @@ PODS:
   - RNSVG (12.1.1):
     - React
   - simdjson (1.0.0)
-  - WatermelonDB (0.24.0):
-    - React
-    - React-jsi
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -351,6 +350,7 @@ DEPENDENCIES:
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
+  - EXImagePicker (from `../node_modules/expo-image-picker/ios`)
   - EXJSONUtils (from `../node_modules/expo-json-utils/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - EXManifests (from `../node_modules/expo-manifests/ios`)
@@ -395,7 +395,6 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - "simdjson (from `../node_modules/@nozbe/simdjson`)"
-  - "WatermelonDB (from `../node_modules/@nozbe/watermelondb`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -416,6 +415,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-file-system/ios"
   EXFont:
     :path: "../node_modules/expo-font/ios"
+  EXImagePicker:
+    :path: "../node_modules/expo-image-picker/ios"
   EXJSONUtils:
     :path: "../node_modules/expo-json-utils/ios"
   EXKeepAwake:
@@ -500,8 +501,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   simdjson:
     :path: "../node_modules/@nozbe/simdjson"
-  WatermelonDB:
-    :path: "../node_modules/@nozbe/watermelondb"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -513,6 +512,7 @@ SPEC CHECKSUMS:
   EXErrorRecovery: ac2622400a32be84604591f70d0efff416e4b9a2
   EXFileSystem: 99aac7962c11c680681819dd9cbca24e20e5b1e7
   EXFont: 2e1c6fe726d008a039db80df95f48b4921b7fe59
+  EXImagePicker: bf704ef8e9171b05696a24114b44c6629565b45d
   EXJSONUtils: f515cf71710855d7ba5bfc6752af3b9a6f6aad01
   EXKeepAwake: 8aa32396a5972d26e75e538603aad0f032396503
   EXManifests: 50e42e01335df4e54109dee7be5a91bfd37347db
@@ -556,7 +556,6 @@ SPEC CHECKSUMS:
   RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   simdjson: c96317b3a50dff3468a42f586ab7ed22c6ab2fd9
-  WatermelonDB: e043b1a32ddc63864eb539b562e86ef80f8224cd
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
 PODFILE CHECKSUM: e93b807c778808020d1c866b25b04960f59a7300
