@@ -42,16 +42,17 @@ export function Splash() {
     }
   })
 
-  useEffect(() => {
-    splashAnimation.value = withTiming(50, { duration: 1000 }, () => {
-      'worklet'
-      runOnJS(startApp)()
-    })
-  }, [])
-
   function startApp() {
     navigation.navigate('SignIn')
   }
+
+  useEffect(() => {
+    splashAnimation.value = withTiming(50, { duration: 1000 }, () => {
+      'worklet'
+
+      runOnJS(startApp)()
+    })
+  }, [])
 
   return (
     <S.Container>
