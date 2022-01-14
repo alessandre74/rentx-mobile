@@ -17,7 +17,7 @@ import { useAuth } from '../../Hooks/Auth/auth'
 
 KeyboardAvoidingView
 export function Profile() {
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
   const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit')
   const [avatar, setAvatar] = useState(user.avatar)
   const [name, setName] = useState(user.name)
@@ -28,7 +28,6 @@ export function Profile() {
   function handleBack() {
     navigation.goBack()
   }
-  function handleSignOut() {}
 
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
     setOption(optionSelected)
@@ -59,7 +58,7 @@ export function Profile() {
             <S.HeaderTop>
               <BackButton color={theme.colors.shape} onPress={handleBack} />
               <S.HeaderTitle>Editar Perfil</S.HeaderTitle>
-              <S.LogoutButton onPress={handleSignOut}>
+              <S.LogoutButton onPress={signOut}>
                 <Feather name="power" size={24} color={theme.colors.shape} />
               </S.LogoutButton>
             </S.HeaderTop>

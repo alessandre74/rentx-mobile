@@ -18,6 +18,7 @@ type SignInCredencials = {
 type AuthContextData = {
   user: User
   signIn: (credencials: SignInCredencials) => Promise<void>
+  signOut: () => Promise<void>
 }
 
 type AuthProviderProps = {

@@ -30,9 +30,25 @@ function AuthProvider({ children }: AuthProviderProps) {
         })
       })
 
-      setData({ ...user, token })
+      setData({ ...(user as User), token })
     } catch (error) {
       throw new Error()
+    }
+  }
+
+  async function signOut() {
+    try {
+      const userColletion = database.get<ModelUser>('users')
+      const response = await userColletion.query().fetch()
+
+      await database.write(async () => {
+        await response[0].destroyPermanently()
+      })
+
+      setData({} as User)
+    } catch (error) {
+      // @ts-ignore
+      throw new Error(error)
     }
   }
 
@@ -49,7 +65,9 @@ function AuthProvider({ children }: AuthProviderProps) {
     }
     loadUserdata()
   }, [])
-  return <AuthContext.Provider value={{ user: data, signIn }}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{ user: data, signIn, signOut }}>{children}</AuthContext.Provider>
+  )
 }
 
 function useAuth(): AuthContextData {
