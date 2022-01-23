@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
 import { AuthContextData, AuthProviderProps, User, SignInCredencials } from './types'
+import { Alert } from 'react-native'
 
 import { api } from '../../services/api'
 import { database } from '../../database'
@@ -20,7 +21,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
       const userCollection = database.get<ModelUser>('users')
       await database.write(async () => {
-        await userCollection.create(newUser => {
+        const dataUser = await userCollection.create(newUser => {
           ;(newUser.user_id = user.id),
             (newUser.name = user.name),
             (newUser.email = user.email),
@@ -28,28 +29,38 @@ function AuthProvider({ children }: AuthProviderProps) {
             (newUser.avatar = user.avatar),
             (newUser.token = token)
         })
-      })
 
-      setData({ ...(user as User), token })
+        const userData = dataUser._raw as unknown as User
+
+        setData(userData)
+      })
     } catch (error) {
-      throw new Error()
+      // @ts-ignore
+      console.log(error.message)
+      Alert.alert('Email ou senha inválido')
     }
   }
 
   async function signOut() {
     try {
-      const userColletion = database.get<ModelUser>('users')
-      const response = await userColletion.query().fetch()
-
+      const userCollection = database.get<ModelUser>('users')
       await database.write(async () => {
-        await response[0].destroyPermanently()
+        const userSelected = await userCollection.find(data.id)
+        await userSelected.destroyPermanently()
       })
 
       setData({} as User)
     } catch (error) {
       // @ts-ignore
-      throw new Error(error)
+      console.log(error.message)
+      Alert.alert('Erro ao sair do aplicativo')
     }
+  }
+
+  async function updateUser(user: User) {
+    try {
+      // const userCollection = database.ge
+    } catch (error) {}
   }
 
   useEffect(() => {
@@ -59,10 +70,12 @@ function AuthProvider({ children }: AuthProviderProps) {
 
       if (response.length > 0) {
         const userData = response[0]._raw as unknown as User
+
         api.defaults.headers.common['authorization'] = `Bearer ${userData.token}`
         setData(userData)
       }
     }
+
     loadUserdata()
   }, [])
   return (
