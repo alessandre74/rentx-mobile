@@ -57,9 +57,19 @@ function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
-  async function updateUser(user: User) {
+  async function updatedUser(user: User) {
     try {
-      // const userCollection = database.ge
+      const userCollection = database.get<ModelUser>('users')
+      await database.write(async () => {
+        const userSelected = await userCollection.find(user.id)
+        await userSelected.update(userData => {
+          ;(userData.name = user.name),
+            (userData.driver_license = user.driver_license),
+            (userData.avatar = user.avatar)
+        })
+      })
+
+      setData(user)
     } catch (error) {}
   }
 
@@ -79,7 +89,9 @@ function AuthProvider({ children }: AuthProviderProps) {
     loadUserdata()
   }, [])
   return (
-    <AuthContext.Provider value={{ user: data, signIn, signOut }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user: data, signIn, signOut, updatedUser }}>
+      {children}
+    </AuthContext.Provider>
   )
 }
 
