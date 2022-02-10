@@ -10,6 +10,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 function AuthProvider({ children }: AuthProviderProps) {
   const [data, setData] = useState<User>({} as User)
+  const [loading, setLoading] = useState(true)
 
   async function signIn({ email, password }: SignInCredencials) {
     try {
@@ -70,7 +71,10 @@ function AuthProvider({ children }: AuthProviderProps) {
       })
 
       setData(user)
-    } catch (error) {}
+    } catch (error) {
+      // @ts-ignore
+      console.log(error.message)
+    }
   }
 
   useEffect(() => {
@@ -83,13 +87,14 @@ function AuthProvider({ children }: AuthProviderProps) {
 
         api.defaults.headers.common['authorization'] = `Bearer ${userData.token}`
         setData(userData)
+        setLoading(false)
       }
     }
 
     loadUserdata()
   }, [])
   return (
-    <AuthContext.Provider value={{ user: data, signIn, signOut, updatedUser }}>
+    <AuthContext.Provider value={{ user: data, signIn, signOut, updatedUser, loading }}>
       {children}
     </AuthContext.Provider>
   )

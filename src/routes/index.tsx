@@ -5,9 +5,11 @@ import { useAuth } from '../Hooks/Auth/auth'
 import { AppTabRoutes } from './app.tab.routes'
 import { AuthRoutes } from './auth.routes'
 
+import { Car } from '../database/model/Car'
 import { CarDTO } from '../dtos/CarDTO'
 import { UserDTO } from '../dtos/userDTO'
 import { ScreenDTO } from '../dtos/ScreenDTO'
+import { LoadAnimation } from '../components/LoadAnimation'
 
 declare global {
   namespace ReactNavigation {
@@ -17,7 +19,7 @@ declare global {
       SignUpFirstStep: undefined
       SignUpSecondStep: UserDTO
       Home_: undefined
-      CarDetails: { car: CarDTO }
+      CarDetails: { car: Car }
       Scheduling: { car: CarDTO }
       SchedulingDetails: { car: CarDTO; dates: string[] }
       Confirmation: ScreenDTO
@@ -27,7 +29,11 @@ declare global {
 }
 
 export function Routes() {
-  const { user } = useAuth()
+  const { user, loading } = useAuth()
 
-  return <NavigationContainer>{user.id ? <AppTabRoutes /> : <AuthRoutes />}</NavigationContainer>
+  return loading && !user ? (
+    <LoadAnimation />
+  ) : (
+    <NavigationContainer>{user.id ? <AppTabRoutes /> : <AuthRoutes />}</NavigationContainer>
+  )
 }

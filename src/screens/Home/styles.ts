@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native'
-import { FlatList } from 'react-native'
+import { FlatList, FlatListProps } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
-import { CarDTO } from '../../dtos/CarDTO'
+import { Car } from '../../database/model/Car'
 
 export const Container = styled.View`
   ${({ theme }) => css`
@@ -34,7 +34,8 @@ export const TotalCars = styled.Text`
     color: ${theme.colors.text};
   `}
 `
-export const CarList = styled(FlatList as new () => FlatList<CarDTO>).attrs({
+
+export const CarList = styled(FlatList as new (props: FlatListProps<Car>) => FlatList<Car>).attrs({
   contentContainerStyle: { padding: 24 }
 })`
   ${({ theme }) => css`
