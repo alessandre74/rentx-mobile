@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { BorderlessButtonProps } from 'react-native-gesture-handler'
-
 import { Ionicons } from '@expo/vector-icons'
-
 import * as S from './styles'
 
 interface Props extends BorderlessButtonProps {
@@ -11,7 +9,7 @@ interface Props extends BorderlessButtonProps {
   color?: string
 }
 
-export function Airplane({ status, size, color, ...rest }: Props) {
+export function AirplaneMode({ status, size, color, ...rest }: Props) {
   return (
     <S.Container {...rest}>
       <Ionicons

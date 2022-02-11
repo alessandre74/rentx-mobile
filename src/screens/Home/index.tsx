@@ -15,7 +15,7 @@ import { LoadAnimation } from '../../components/LoadAnimation'
 import { Car } from '../../components/Car'
 
 import { Car as ModelCar } from '../../database/model/Car'
-import { Airplane } from '../../components/Airplane'
+import { AirplaneMode } from '../../components/AirplaneMode'
 
 import * as S from './styles'
 
@@ -87,7 +87,7 @@ export function Home() {
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
 
       <S.Header>
-        <Airplane status={connected} size={24} color="blue" onPress={Disconnected} />
+        <AirplaneMode status={connected} size={24} color="blue" onPress={Disconnected} />
         <S.HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
           {!loading && <S.TotalCars>{`Total de ${cars.length} carros`}</S.TotalCars>}
