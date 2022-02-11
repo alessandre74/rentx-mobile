@@ -5,7 +5,7 @@ import { useAuth } from '../Hooks/Auth/auth'
 import { AppTabRoutes } from './app.tab.routes'
 import { AuthRoutes } from './auth.routes'
 
-import { Car } from '../database/model/Car'
+import { Car as ModelCar } from '../database/model/Car'
 import { CarDTO } from '../dtos/CarDTO'
 import { UserDTO } from '../dtos/userDTO'
 import { ScreenDTO } from '../dtos/ScreenDTO'
@@ -19,8 +19,8 @@ declare global {
       SignUpFirstStep: undefined
       SignUpSecondStep: UserDTO
       Home_: undefined
-      CarDetails: { car: Car }
-      Scheduling: { car: CarDTO }
+      CarDetails: { car: ModelCar }
+      Scheduling: { car: ModelCar }
       SchedulingDetails: { car: CarDTO; dates: string[] }
       Confirmation: ScreenDTO
       MyCars: undefined

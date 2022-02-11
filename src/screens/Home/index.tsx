@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, Button } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { useNetInfo } from '@react-native-community/netinfo'
+
 import { synchronize } from '@nozbe/watermelondb/sync'
 import { database } from '../../database'
 
@@ -9,17 +10,21 @@ import useHooks from '../../Hooks/useHooks'
 import Logo from '../../assets/logo.svg'
 
 import { api } from '../../services/api'
-import { Car as ModelCar } from '../../database/model/Car'
-import { Car } from '../../components/Car'
 import { LoadAnimation } from '../../components/LoadAnimation'
+
+import { Car } from '../../components/Car'
+
+import { Car as ModelCar } from '../../database/model/Car'
+import { Airplane } from '../../components/Airplane'
 
 import * as S from './styles'
 
 export function Home() {
+  const netInfo = useNetInfo()
+  const [connected, setConnected] = useState(netInfo.isConnected)
   const [cars, setCars] = useState<ModelCar[]>([])
   const [loading, setLoading] = useState(true)
 
-  const netInfo = useNetInfo()
   const { navigation } = useHooks()
 
   async function offLineSynchronize() {
@@ -34,7 +39,9 @@ export function Home() {
       },
       pushChanges: async ({ changes }) => {
         const user = changes.users
-        await api.post('/users/sync', user).catch(console.log)
+        if (user.updated.length > 0) {
+          await api.post('/users/sync', user)
+        }
       }
     })
   }
@@ -54,7 +61,7 @@ export function Home() {
           setCars(cars)
         }
       } catch (error) {
-        console.log('aqui estou', error)
+        console.log(error)
       } finally {
         if (isMounted) {
           setLoading(false)
@@ -68,13 +75,19 @@ export function Home() {
   }, [])
 
   useEffect(() => {
-    if (netInfo.isConnected === true) offLineSynchronize()
-  }, [netInfo.isConnected])
+    if (connected === true) offLineSynchronize()
+  }, [connected])
+
+  function Disconnected() {
+    setConnected(connected ? (netInfo.isConnected = false) : (netInfo.isConnected = true))
+  }
 
   return (
     <S.Container>
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
+
       <S.Header>
+        <Airplane status={connected} size={24} color="blue" onPress={Disconnected} />
         <S.HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
           {!loading && <S.TotalCars>{`Total de ${cars.length} carros`}</S.TotalCars>}

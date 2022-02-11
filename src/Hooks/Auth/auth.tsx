@@ -37,7 +37,7 @@ function AuthProvider({ children }: AuthProviderProps) {
       })
     } catch (error) {
       // @ts-ignore
-      console.log(error.message)
+      console.log('signin', error.message)
       Alert.alert('Email ou senha inválido')
     }
   }
@@ -63,14 +63,17 @@ function AuthProvider({ children }: AuthProviderProps) {
       const userCollection = database.get<ModelUser>('users')
       await database.write(async () => {
         const userSelected = await userCollection.find(user.id)
+
+        // const dataUser = await userSelected.update(userData => {
         await userSelected.update(userData => {
           ;(userData.name = user.name),
             (userData.driver_license = user.driver_license),
             (userData.avatar = user.avatar)
         })
-      })
 
-      setData(user)
+        // const userData = dataUser._raw as unknown as User
+        setData(user)
+      })
     } catch (error) {
       // @ts-ignore
       console.log(error.message)

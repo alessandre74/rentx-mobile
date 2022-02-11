@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
+import { useNetInfo } from '@react-native-community/netinfo'
 
 import * as ImagePicker from 'expo-image-picker'
 import * as Yup from 'yup'
@@ -16,9 +17,9 @@ import { Button } from '../../components/Button'
 import { PasswordInput } from '../../components/PasswordInput'
 import { Spacer } from '../../components/Spacer'
 
-KeyboardAvoidingView
 export function Profile() {
   const { user, signOut, updatedUser } = useAuth()
+  const netInfo = useNetInfo()
   const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit')
   const [avatar, setAvatar] = useState(user.avatar)
   const [name, setName] = useState(user.name)
@@ -31,7 +32,11 @@ export function Profile() {
   }
 
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
-    setOption(optionSelected)
+    if (netInfo.isConnected === false && optionSelected === 'passwordEdit') {
+      Alert.alert('Você está Offline', 'Para mudar a senha, conecte-se a Internet')
+    } else {
+      setOption(optionSelected)
+    }
   }
 
   async function handleAvatarSelect() {
