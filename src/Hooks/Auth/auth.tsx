@@ -89,6 +89,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         const userData = response[0]._raw as unknown as User
 
         api.defaults.headers.common['authorization'] = `Bearer ${userData.token}`
+
         setData(userData)
         setLoading(false)
       }

@@ -1,9 +1,9 @@
 import React from 'react'
-import { BorderlessButtonProps } from 'react-native-gesture-handler'
-import { Ionicons } from '@expo/vector-icons'
+import { RectButtonProps } from 'react-native-gesture-handler'
+import { Feather } from '@expo/vector-icons'
 import * as S from './styles'
 
-interface Props extends BorderlessButtonProps {
+interface Props extends RectButtonProps {
   status: boolean | null
   size: number
   color?: string
@@ -12,8 +12,8 @@ interface Props extends BorderlessButtonProps {
 export function AirplaneMode({ status, size, color, ...rest }: Props) {
   return (
     <S.Container {...rest}>
-      <Ionicons
-        name={status === true ? 'airplane' : 'airplane-outline'}
+      <Feather
+        name={status === true || status === null ? 'wifi' : 'wifi-off'}
         size={size}
         color={color}
       />

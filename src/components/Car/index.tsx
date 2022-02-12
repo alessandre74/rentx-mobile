@@ -27,7 +27,7 @@ export function Car({ data, ...rest }: Props) {
           <S.Rent>
             <S.Period>{data.period}</S.Period>
             <S.Price>
-              {netInfo.isConnected === true ? formatCurrency(data.price) : 'R$ ******'}
+              {netInfo.isConnected === true ? formatCurrency(data.price) : 'R$ *******'}
             </S.Price>
           </S.Rent>
 

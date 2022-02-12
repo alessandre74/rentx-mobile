@@ -25,7 +25,7 @@ export function Home() {
   const [cars, setCars] = useState<ModelCar[]>([])
   const [loading, setLoading] = useState(true)
 
-  const { navigation } = useHooks()
+  const { navigation, theme } = useHooks()
 
   async function offLineSynchronize() {
     await synchronize({
@@ -87,10 +87,15 @@ export function Home() {
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
 
       <S.Header>
-        <AirplaneMode status={connected} size={24} color="blue" onPress={Disconnected} />
         <S.HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
           {!loading && <S.TotalCars>{`Total de ${cars.length} carros`}</S.TotalCars>}
+          <AirplaneMode
+            status={connected}
+            size={20}
+            color={theme.colors.background_secondary}
+            onPress={Disconnected}
+          />
         </S.HeaderContent>
       </S.Header>
 

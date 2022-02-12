@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
-import { StatusBar, Text } from 'react-native'
+import { StatusBar, LogBox } from 'react-native'
 import { useNetInfo } from '@react-native-community/netinfo'
 
 import {
@@ -26,6 +26,8 @@ import { formatCurrency } from '../../utils/formatted'
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
 
 import * as S from './styles'
+
+LogBox.ignoreLogs(['Non-serializable values were found in the navigation state'])
 
 type Params = {
   car: ModelCar
