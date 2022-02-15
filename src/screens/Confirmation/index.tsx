@@ -1,7 +1,7 @@
 import React from 'react'
 import { StatusBar, useWindowDimensions } from 'react-native'
 
-import useHooks from '../../Hooks/useHooks'
+import { useHooks } from '../../Hooks/useHooks'
 import LogoSvg from '../../assets/logo_background_gray.svg'
 import DoneSvg from '../../assets/done.svg'
 

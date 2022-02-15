@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 
-import useHooks from '../../../Hooks/useHooks'
+import { useHooks } from '../../../Hooks/useHooks'
 import { api } from '../../../services/api'
 import { UserDTO } from '../../../dtos/userDTO'
 

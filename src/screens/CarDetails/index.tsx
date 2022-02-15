@@ -11,7 +11,7 @@ import {
   Extrapolate
 } from 'react-native-reanimated'
 
-import useHooks from '../../Hooks/useHooks'
+import { useHooks } from '../../Hooks/useHooks'
 import { api } from '../../services/api'
 
 import { Accessory } from '../../components/Accessory'

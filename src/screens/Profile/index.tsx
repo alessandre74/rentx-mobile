@@ -9,7 +9,7 @@ import * as S from './styles'
 
 import { Feather } from '@expo/vector-icons'
 import { useAuth } from '../../Hooks/Auth/auth'
-import useHooks from '../../Hooks/useHooks'
+import { useHooks } from '../../Hooks/useHooks'
 
 import { BackButton } from '../../components/BackButton'
 import { Input } from '../../components/Input'

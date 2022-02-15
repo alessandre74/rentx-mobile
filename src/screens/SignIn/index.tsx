@@ -7,7 +7,7 @@ import {
   Alert
 } from 'react-native'
 
-import useHooks from '../../Hooks/useHooks'
+import { useHooks } from '../../Hooks/useHooks'
 
 import { useAuth } from '../../Hooks/Auth/auth'
 import { Button } from '../../components/Button'

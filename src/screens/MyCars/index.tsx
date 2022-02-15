@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { StatusBar, FlatList } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 
-import useHooks from '../../Hooks/useHooks'
+import { useHooks } from '../../Hooks/useHooks'
 
 import { api } from '../../services/api'
 import { CarDTO } from '../../dtos/CarDTO'

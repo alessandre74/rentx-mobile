@@ -13,7 +13,7 @@ import { formatCurrency } from '../../utils/formatted'
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
 import { getPlatformDate } from '../../utils/getPlatformdate'
 
-import useHooks from '../../Hooks/useHooks'
+import { useHooks } from '../../Hooks/useHooks'
 
 import * as S from './styles'
 

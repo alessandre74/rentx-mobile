@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { StatusBar, Button } from 'react-native'
+import { StatusBar } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { useNetInfo } from '@react-native-community/netinfo'
 
 import { synchronize } from '@nozbe/watermelondb/sync'
 import { database } from '../../database'
 
-import useHooks from '../../Hooks/useHooks'
+import { useHooks } from '../../Hooks/useHooks'
 import Logo from '../../assets/logo.svg'
 
 import { api } from '../../services/api'

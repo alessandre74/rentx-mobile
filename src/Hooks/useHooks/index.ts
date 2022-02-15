@@ -1,7 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useTheme } from 'styled-components'
 
-function useHooks() {
+export function useHooks() {
   const route = useRoute()
   const theme = useTheme()
   const navigation = useNavigation()
@@ -12,5 +12,3 @@ function useHooks() {
     navigation
   }
 }
-
-export default useHooks

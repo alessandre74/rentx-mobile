@@ -7,7 +7,7 @@ import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { Spacer } from '../../../components/Spacer'
 
-import useHooks from '../../../Hooks/useHooks'
+import { useHooks } from '../../../Hooks/useHooks'
 
 import * as Yup from 'yup'
 import * as S from '../SignUpFirstStep/styles'
