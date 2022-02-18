@@ -64,14 +64,12 @@ function AuthProvider({ children }: AuthProviderProps) {
       await database.write(async () => {
         const userSelected = await userCollection.find(user.id)
 
-        // const dataUser = await userSelected.update(userData => {
         await userSelected.update(userData => {
           ;(userData.name = user.name),
             (userData.driver_license = user.driver_license),
             (userData.avatar = user.avatar)
         })
 
-        // const userData = dataUser._raw as unknown as User
         setData(user)
       })
     } catch (error) {
@@ -89,7 +87,6 @@ function AuthProvider({ children }: AuthProviderProps) {
         const userData = response[0]._raw as unknown as User
 
         api.defaults.headers.common['authorization'] = `Bearer ${userData.token}`
-
         setData(userData)
         setLoading(false)
       }

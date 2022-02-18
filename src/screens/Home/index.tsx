@@ -27,18 +27,19 @@ export function Home() {
 
   const { navigation, theme } = useHooks()
 
-  async function offLineSynchronize() {
+  async function offlineSynchronize() {
     await synchronize({
       database,
       pullChanges: async ({ lastPulledAt }) => {
         const response = await api.get(`cars/sync/pull?lastPulledVersion=${lastPulledAt || 0}`)
 
         const { changes, latestVersion } = response.data
-
         return { changes, timestamp: latestVersion }
       },
       pushChanges: async ({ changes }) => {
         const user = changes.users
+
+        console.log(JSON.stringify(user, null, 2))
         if (user.updated.length > 0) {
           await api.post('/users/sync', user)
         }
@@ -75,11 +76,17 @@ export function Home() {
   }, [])
 
   useEffect(() => {
-    if (connected === true) offLineSynchronize()
-  }, [connected])
+    if (netInfo.isConnected === true) {
+      offlineSynchronize()
+    }
+  }, [netInfo.isConnected])
 
   function Disconnected() {
-    setConnected(connected ? (netInfo.isConnected = false) : (netInfo.isConnected = true))
+    setConnected(
+      connected === true || connected === null
+        ? (netInfo.isConnected = false)
+        : (netInfo.isConnected = true)
+    )
   }
 
   return (
