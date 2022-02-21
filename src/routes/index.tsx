@@ -18,7 +18,7 @@ declare global {
       SignIn: undefined
       SignUpFirstStep: undefined
       SignUpSecondStep: UserDTO
-      Home_: undefined
+      Home: undefined
       CarDetails: { car: ModelCar }
       Scheduling: { car: ModelCar }
       SchedulingDetails: { car: CarDTO; dates: string[] }
