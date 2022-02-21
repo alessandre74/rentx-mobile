@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { StatusBar } from 'react-native'
+import { Platform, StatusBar } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { useNetInfo } from '@react-native-community/netinfo'
 
@@ -24,6 +24,7 @@ export function Home() {
   const [connected, setConnected] = useState(netInfo.isConnected)
   const [cars, setCars] = useState<ModelCar[]>([])
   const [loading, setLoading] = useState(true)
+  const [lastPulletState, setLastPulletState] = useState<number | null>(0)
 
   const { navigation, theme } = useHooks()
 
@@ -34,12 +35,12 @@ export function Home() {
         const response = await api.get(`cars/sync/pull?lastPulledVersion=${lastPulledAt || 0}`)
 
         const { changes, latestVersion } = response.data
+
         return { changes, timestamp: latestVersion }
       },
       pushChanges: async ({ changes }) => {
         const user = changes.users
 
-        console.log(JSON.stringify(user, null, 2))
         if (user.updated.length > 0) {
           await api.post('/users/sync', user)
         }
@@ -58,6 +59,7 @@ export function Home() {
       try {
         const carCollection = database.get<ModelCar>('cars')
         const cars = await carCollection.query().fetch()
+
         if (isMounted) {
           setCars(cars)
         }
@@ -97,12 +99,14 @@ export function Home() {
         <S.HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
           {!loading && <S.TotalCars>{`Total de ${cars.length} carros`}</S.TotalCars>}
-          <AirplaneMode
-            status={connected}
-            size={20}
-            color={theme.colors.background_secondary}
-            onPress={Disconnected}
-          />
+          {Platform.OS === 'ios' && (
+            <AirplaneMode
+              status={connected}
+              size={20}
+              color={theme.colors.background_secondary}
+              onPress={Disconnected}
+            />
+          )}
         </S.HeaderContent>
       </S.Header>
 
