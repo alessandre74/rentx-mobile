@@ -68,13 +68,13 @@ Instale as dependências
 yarn ou sudo yarn
 ```
 
-Devido um problema no framework database WatermelonDB, segue abaixo alguns passos
+Devido um problema no framework database WatermelonDB, segue abaixo alguns passos:
 
 ```
 Ir até a pasta node_modules/@nozbe/simdjson/src e copiar os arquivos simdjson.cpp
 e simdjson.h, é só copiar e colar na pasta node_modules/@nozbe/watermelondb/native/shared.
-Estamos utilizando a versão 0.24.0 e no momento do desenvolvimento desse projeto essa versão
-estava com esse problema. Depois desse procedimento, no terminal, ir até a pasta ios e rodar
+Estamos utilizando a versão 0.24.0, e no momento do desenvolvimento do projeto, essa versão
+apresentava esse problema. Depois desse procedimento, no terminal, ir até a pasta ios e rodar
 o comando pod install. Não esqueça de voltar para a pasta do projeto rentx-mobile.
 
 ```
