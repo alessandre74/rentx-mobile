@@ -26,7 +26,31 @@ RentX é um aplicativo de aluguel de carros desenvolvido no curso Ignite da Rock
 
 ### Instalação
 
-Clone o repositório
+Clone o repositório da API no endereço abaixo
+
+```
+[Api](https://github.com/rocketseat-education/ignite-react-native-rentx/tree/main/server)
+```
+
+Acesse o diretório do projeto
+
+```
+cd server
+```
+
+Instale as dependências
+
+```
+yarn ou sudo yarn
+```
+
+Inicie o server
+
+```
+yarn start
+```
+
+Clone o repositório do Aplicativo
 
 ```
 git clone git@github.com:alessandre74/rentx-mobile.git
@@ -44,24 +68,35 @@ Instale as dependências
 yarn ou sudo yarn
 ```
 
-Altere o arquivo API
+Devido um problema no framework database WatermelonDB, segue abaixo alguns passos
 
-```
-Na pasta services/api.ts em baseURL: 'http://seu ip ou localhost:3333'
-```
-
-Inicie o server
-
-```
-yarn api
+````
+Ir até a pasta node_modules/@nozbe/simdjson/src e copiar os arquivos simdjson.cpp
+e simdjson.h, é só copiar e colar na pasta node_modules/@nozbe/watermelondb/native/shared.
+Estamos utilizando a versão 0.24.0 e no momento do desenvolvimento desse projeto essa versão
+estava com esse problema. Depois desse procedimento, no terminal, ir até a pasta ios e rodar
+o comando pod install. Não esqueça de voltar para a pasta do projeto rentx-mobile.
 ```
 
-Inicie o aplicativo
+Start o projeto
 
 ```
-expo start
+yarn start
+```
+
+Inicie o aplicativo iOS
+
+```
+yarn run ios
+```
+
+Inicie o aplicativo Android
+
+```
+yarn run android
 ```
 
 ## 📄 License
 
 Este projeto está sob a licença MIT.
+````
