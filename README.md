@@ -28,7 +28,9 @@ RentX é um aplicativo de aluguel de carros desenvolvido no curso Ignite da Rock
 
 Clone o repositório da API no endereço abaixo
 
-[Api](https://github.com/rocketseat-education/ignite-react-native-rentx/tree/main/server)
+```
+https://github.com/rocketseat-education/ignite-react-native-rentx/tree/main/server
+```
 
 Acesse o diretório do projeto
 
