@@ -13,6 +13,10 @@ RentX é um aplicativo de aluguel de carros desenvolvido no curso Ignite da Rock
 ## 🚀 Tecnologias utilizadas
 
 - [Expo CLI](https://expo.dev/)
+- [Axios](https://github.com/axios/axios)
+- [WatermelonDB](https://github.com/Nozbe/WatermelonDB)
+- [React Native FastImage](https://github.com/DylanVann/react-native-fast-image)
+- [Recat Native NetInfo](https://github.com/react-native-netinfo/react-native-netinfo)
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 - [React Native Calendars](https://github.com/wix/react-native-calendars)
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
